@@ -6,7 +6,6 @@ import 'app/app_widget.dart';
 import 'app/shared/info/save_trilha.dart';
 
 void main() async {
-  print('objddect');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await getPref();
