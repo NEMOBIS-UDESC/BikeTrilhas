@@ -86,19 +86,34 @@ GestureDetector _renderImageContainer(
                 Container(
                   child: Stack(
                     children: <Widget>[
+                      // FIXME: Problemas com sobreposição de gestos
+
+                      // GestureDetector(
+                      //   onVerticalDragEnd: (details) {
+                      //     print(scaleStateController);
+                      //     double velocity =
+                      //         details.velocity.pixelsPerSecond.distance;
+                      //     if (velocity > 100 &&
+                      //         scaleStateController.isZooming == false) {
+                      //       Navigator.pop(context);
+                      //     }
+                      //   },
+                      //   excludeFromSemantics: true,
+                      //   child: PhotoView(
+                      //     disableGestures: false,
+                      //     scaleStateController: scaleStateController,
+                      //     imageProvider: CachedNetworkImageProvider(e),
+                      //     minScale: PhotoViewComputedScale.covered,
+                      //     gestureDetectorBehavior: gestureDetectorBehavior,
+                      //   ),
+                      // ),
+
                       PhotoView(
                         disableGestures: false,
                         imageProvider: CachedNetworkImageProvider(e),
                         minScale: PhotoViewComputedScale.covered,
                       ),
                       _renderCloseIcon(context, isTablet),
-                      GestureDetector(onVerticalDragEnd: (details) {
-                        double velocity =
-                            details.velocity.pixelsPerSecond.distance;
-                        if (velocity > 100) {
-                          Navigator.pop(context);
-                        }
-                      })
                     ],
                     fit: StackFit.expand,
                   ),
