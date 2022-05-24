@@ -22,6 +22,9 @@ import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'modules/email/email_module.dart';
+import 'modules/emailregister/emailregister_module.dart';
+
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
@@ -49,6 +52,8 @@ class AppModule extends Module {
     ModuleRoute('/fotos', module: PhotoModule()),
     ModuleRoute('/userroute', module: UserroutesModule()),
     ModuleRoute('/usertrail', module: UsertrailsModule()),
+    ModuleRoute('/email', module: EmailModule()),
+    ModuleRoute('/emailregister', module: EmailregisterModule()),
     ModuleRoute('/waypoint', module: WaypointsModule()),
     ModuleRoute('/filter', module: FilterModule()),
     ModuleRoute('/info', module: InfoModule()),

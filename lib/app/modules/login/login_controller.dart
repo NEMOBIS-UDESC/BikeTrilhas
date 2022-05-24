@@ -1,3 +1,4 @@
+import 'package:biketrilhas_modular/app/modules/email/email_user.dart';
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/info/info_repository.dart';
 import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
@@ -14,7 +15,7 @@ class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
   final InfoRepository infoRepository;
-
+  EmailUser user;
   @observable
   bool loading = false;
 
@@ -35,6 +36,27 @@ abstract class _LoginControllerBase with Store {
       }
     } catch (e) {
       loading = false;
+    }
+  }
+
+    @action
+  Future loginWithEmail(context, EmailUser user) async {
+    int i = 1;
+    print(user.email);
+    if (i == 1){
+      try {
+      final auth = Modular.get<AuthController>();
+      loading = true;
+      await auth.loginProcedure();
+      await infoRepository.getModels();
+      LocationPermission _permissionGranted =
+          await Geolocator.checkPermission();
+      if (_permissionGranted == LocationPermission.denied) {
+        locationPermissionPopUp(context);
+      }
+    } catch (e) {
+      loading = false;
+    }
     }
   }
 }

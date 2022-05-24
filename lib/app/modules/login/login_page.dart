@@ -66,7 +66,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {
-        store.loginWithGoogle(context);
+        Modular.to.pushNamed('/email');
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
