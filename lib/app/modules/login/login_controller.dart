@@ -29,9 +29,12 @@ abstract class _LoginControllerBase with Store {
       await auth.loginProcedure();
       await infoRepository.getModels();
       LocationPermission _permissionGranted =
-          await Geolocator.checkPermission();
+          await Geolocator.requestPermission();
       if (_permissionGranted == LocationPermission.denied) {
-        locationPermissionPopUp(context);
+        //locationPermissionPopUp(context);
+        Modular.to.pushReplacementNamed('/map');
+      } else {
+        await functionPermisionEnables(context);
       }
     } catch (e) {
       loading = false;

@@ -42,9 +42,16 @@ class _PermissionPageState extends State<PermissionPage> {
 
   _body() {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(28.0),
       child: Center(
           child: Column(children: [
+        Image.asset(
+          "images/about_logo.png",
+          fit: BoxFit.fill,
+        ),
+        SizedBox(
+          height: 30,
+        ),
         Text(
           'Condições de Permissão',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -60,8 +67,34 @@ class _PermissionPageState extends State<PermissionPage> {
         SizedBox(
           height: 30,
         ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            // Foreground color
+            onPrimary: Theme.of(context).colorScheme.onPrimary,
+            // Background color
+            primary: Theme.of(context).colorScheme.primary,
+          ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
+          onPressed: () async {
+            LocationPermission _permissionGranted =
+                await Geolocator.requestPermission();
+            if (_permissionGranted != LocationPermission.denied &&
+                _permissionGranted != LocationPermission.deniedForever) {
+              functionPermisionEnables(context);
+            }
+          },
+          child: const Text('Configurar Permissão'),
+        ),
+      ])),
+    );
+  }
+}
+
+
+/*
         OutlineButton(
-          splashColor: Colors.grey,
+          
           onPressed: () async {
             LocationPermission _permissionGranted =
                 await Geolocator.requestPermission();
@@ -92,7 +125,4 @@ class _PermissionPageState extends State<PermissionPage> {
             ),
           ),
         ),
-      ])),
-    );
-  }
-}
+*/
