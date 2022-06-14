@@ -26,12 +26,14 @@ class _SplashPageState extends State<SplashPage> {
       if (auth.status == AuthStatus.login) {
         //await auth.loginProcedure();
 
-        /*if (_permissionGranted == LocationPermission.denied ||
+        var _permissionGranted = await Geolocator.checkPermission();
+
+        if (_permissionGranted == LocationPermission.denied ||
             _permissionGranted == LocationPermission.deniedForever) {
           await locationPermissionPopUp(context);
-        } else {*/
-        await functionPermisionEnables(context);
-        //}
+        } else {
+          await functionPermisionEnables(context);
+        }
         //Modular.to.pushReplacementNamed('/map');
       } else if (auth.status == AuthStatus.logoff) {
         Modular.to.pushReplacementNamed('/login');

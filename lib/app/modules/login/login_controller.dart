@@ -29,37 +29,41 @@ abstract class _LoginControllerBase with Store {
       await auth.loginWithGoogle();
       await auth.loginProcedure();
       await infoRepository.getModels();
-      LocationPermission _permissionGranted =
+      await locationPermissionPopUp(context);
+      /*LocationPermission _permissionGranted =
           await Geolocator.requestPermission();
       if (_permissionGranted == LocationPermission.denied) {
-        //locationPermissionPopUp(context);
         Modular.to.pushReplacementNamed('/map');
       } else {
         await functionPermisionEnables(context);
-      }
+      }*/
     } catch (e) {
       loading = false;
     }
   }
 
-    @action
+  @action
   Future loginWithEmail(context, EmailUser user) async {
     int i = 1;
     print(user.email);
-    if (i == 1){
+    if (i == 1) {
       try {
-      final auth = Modular.get<AuthController>();
-      loading = true;
-      await auth.loginProcedure();
-      await infoRepository.getModels();
-      LocationPermission _permissionGranted =
-          await Geolocator.checkPermission();
-      if (_permissionGranted == LocationPermission.denied) {
-        locationPermissionPopUp(context);
+        final auth = Modular.get<AuthController>();
+        loading = true;
+        await auth.loginProcedure();
+        await infoRepository.getModels();
+        await locationPermissionPopUp(context);
+        /*LocationPermission _permissionGranted =
+            await Geolocator.requestPermission();
+        if (_permissionGranted == LocationPermission.denied) {
+          //locationPermissionPopUp(context);
+          Modular.to.pushReplacementNamed('/map');
+        } else {
+          await functionPermisionEnables(context);
+        }*/
+      } catch (e) {
+        loading = false;
       }
-    } catch (e) {
-      loading = false;
-    }
     }
   }
 }

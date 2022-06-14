@@ -73,12 +73,12 @@ alertaComEscolha(context, titulo, mensagem, String botao1text,
   );
 }
 
-/*locationPermissionPopUp(context) {
+locationPermissionPopUp(context) {
   alertaComEscolha(
       context,
       'Location Permission',
       Text(
-          'Bike Trilhas collects location data to enable map tracking even when the app is in background.'),
+          'Bike Trilhas collects location data to enable map tracking even when the app is closed or not in use.'),
       'CANCEL',
       () {
         Modular.to.pushReplacementNamed('/map');
@@ -94,7 +94,7 @@ alertaComEscolha(context, titulo, mensagem, String botao1text,
           return;
         }
       });
-}*/
+}
 
 functionPermisionEnables(context) async {
   await Geolocator.getCurrentPosition().then((value) {
