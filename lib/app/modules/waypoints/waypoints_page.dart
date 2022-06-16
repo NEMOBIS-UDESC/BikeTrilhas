@@ -14,8 +14,8 @@ class WaypointsPage extends StatefulWidget {
   _WaypointsPageState createState() => _WaypointsPageState();
 }
 
-class _WaypointsPageState
-    extends ModularState<WaypointsPage, WaypointsController> {
+class _WaypointsPageState extends State<WaypointsPage> {
+  WaypointsController store = Modular.get();
   Completer<GoogleMapController> _controller = Completer();
 
   @override

@@ -26,7 +26,8 @@ class MapPage extends StatefulWidget {
   _MapPageState createState() => _MapPageState();
 }
 
-class _MapPageState extends ModularState<MapPage, MapController> {
+class _MapPageState extends State<MapPage> {
+  MapController store = Modular.get();
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController mapController;
   int n = 0;

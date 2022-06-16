@@ -16,8 +16,8 @@ class UserroutesPage extends StatefulWidget {
   _UserroutesPageState createState() => _UserroutesPageState();
 }
 
-class _UserroutesPageState
-    extends ModularState<UserroutesPage, UserroutesController> {
+class _UserroutesPageState extends State<UserroutesPage> {
+  UserroutesController store = Modular.get();
   Completer<GoogleMapController> _controller = Completer();
   int routeState = 0, destinos = 0;
 
@@ -120,10 +120,12 @@ class _UserroutesPageState
             Positioned(
               bottom: 0,
               child: Visibility(
-                child: RaisedButton(
-                  color: Colors.green,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24)),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24)),
+                  ),
                   child: Text(
                     "Criar",
                     style: TextStyle(
