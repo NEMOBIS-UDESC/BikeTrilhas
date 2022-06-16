@@ -208,7 +208,7 @@ class _EdicaoWaypointState extends State<EdicaoWaypoint> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Salvar'),
               onPressed: () {
                 setState(() {
@@ -309,7 +309,7 @@ class _EdicaoWaypointState extends State<EdicaoWaypoint> {
                       return child;
                     })),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('Cancelar'),
                 onPressed: () {
                   setState(() {
@@ -317,7 +317,7 @@ class _EdicaoWaypointState extends State<EdicaoWaypoint> {
                   });
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text('Salvar'),
                 onPressed: () {
                   setState(() {
@@ -583,7 +583,7 @@ alertEdit(BuildContext context, String msg) {
             msg,
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
                 child: Text('OK'),
                 onPressed: () {
                   print("Ok, alert edit");
