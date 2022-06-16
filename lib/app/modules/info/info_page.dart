@@ -1,18 +1,15 @@
 import 'package:biketrilhas_modular/app/shared/utils/breakpoints.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'info_controller.dart';
-
 void _launchURL(String url) async {
-  if (!await launch(url)) throw 'Could not launch $url';
+  if (!await launchUrl(Uri(path: url))) throw 'Could not launch $url';
 }
 
-void _launchMailto(String app_email_url) async {
+void _launchMailto(String appEmailUrl) async {
   final mailtoLink = Mailto(
     to: ['nemobis.udesc@gmail.com'],
     // subject: 'mailto example subject',
@@ -21,7 +18,7 @@ void _launchMailto(String app_email_url) async {
   // Convert the Mailto instance into a string.
   // Use either Dart's string interpolation
   // or the toString() method.
-  await launch('$mailtoLink');
+  await launchUrl(Uri(path: '$mailtoLink'));
 }
 
 Row _renderRowAbout(double width) {
@@ -209,7 +206,7 @@ class InfoPage extends StatefulWidget {
   _InfoPageState createState() => _InfoPageState();
 }
 
-class _InfoPageState extends ModularState<InfoPage, InfoController> {
+class _InfoPageState extends State<InfoPage> {
   //use 'controller' variable to access controller
 
   @override
@@ -225,7 +222,7 @@ class _InfoPageState extends ModularState<InfoPage, InfoController> {
         centerTitle: true,
       ),
       body: Scrollbar(
-        isAlwaysShown: !isTablet,
+        thumbVisibility: !isTablet,
         thickness: 8,
         interactive: true,
         child: Center(
