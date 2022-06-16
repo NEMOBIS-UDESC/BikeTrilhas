@@ -4,12 +4,12 @@ import 'package:biketrilhas_modular/app/modules/login/login_page.dart';
 
 class LoginModule extends Module {
   @override
-  final List<Bind> binds = [
+  List<Bind> get binds => [
         Bind.singleton((i) => LoginController(i.get())),
       ];
 
   @override
-  final List<ModularRoute> routes = [
+  List<ModularRoute> get routes => [
         ChildRoute(Modular.initialRoute, child: (_, args) => LoginPage()),
       ];
 }

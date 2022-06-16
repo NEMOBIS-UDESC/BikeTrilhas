@@ -60,8 +60,13 @@ class _PermissionPageState extends State<PermissionPage> {
         SizedBox(
           height: 30,
         ),
-        OutlineButton(
-          splashColor: Colors.grey,
+        OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            elevation: 0,
+            side: BorderSide(color: Colors.black),
+          ),
           onPressed: () async {
             LocationPermission _permissionGranted =
                 await Geolocator.requestPermission();
@@ -70,10 +75,6 @@ class _PermissionPageState extends State<PermissionPage> {
               functionPermisionEnables(context);
             }
           },
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          highlightElevation: 0,
-          borderSide: BorderSide(color: Colors.black),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Row(
