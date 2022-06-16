@@ -1,18 +1,14 @@
 import 'dart:math';
-import 'package:biketrilhas_modular/app/modules/map/Components/bottomsheets/bottom_sheets.dart';
 import 'package:biketrilhas_modular/app/modules/map/Components/bottomsheets/bottomsheet_temp.dart';
 import 'package:biketrilhas_modular/app/modules/map/map_controller.dart';
 import 'package:biketrilhas_modular/app/shared/drawer/drawer_controller.dart';
 import 'package:biketrilhas_modular/app/shared/info/dados_trilha_model.dart';
 import 'package:biketrilhas_modular/app/shared/info/dados_waypoint_model.dart';
-import 'package:biketrilhas_modular/app/shared/info/dados_waypoint_model.dart';
-import 'package:biketrilhas_modular/app/shared/info/info_repository.dart';
 import 'package:biketrilhas_modular/app/shared/trilhas/trilha_model.dart';
 import 'package:biketrilhas_modular/app/shared/trilhas/trilha_repository.dart';
 import 'package:biketrilhas_modular/app/shared/trilhas/waypoint_model.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -128,13 +124,13 @@ abstract class _UsertrailsControllerBase with Store {
               "Deseja realizar o upload da trilha agora?",
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                   child: Text('Não'),
                   onPressed: () {
                     Navigator.pop(context);
                     return;
                   }),
-              FlatButton(
+              TextButton(
                   child: Text('Sim'),
                   onPressed: () {
                     mapController.update = false;
@@ -171,13 +167,13 @@ abstract class _UsertrailsControllerBase with Store {
               "Deseja realizar o upload do waypoint agora?",
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                   child: Text('Não'),
                   onPressed: () {
                     Navigator.pop(context);
                     return;
                   }),
-              FlatButton(
+              TextButton(
                   child: Text('Sim'),
                   onPressed: () {
                     mapController.trailAux = trilha;

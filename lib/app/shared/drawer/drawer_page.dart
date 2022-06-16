@@ -4,7 +4,7 @@ import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class DrawerPage extends StatefulWidget {
   final String title;
@@ -239,9 +239,9 @@ class _DrawerPageState extends State<DrawerPage> {
             dense: true,
             onTap: () async {
               Navigator.pop(context);
-              if (await canLaunch(
+              if (await canLaunchUrlString(
                   'https://bdes.joinville.udesc.br/politica/Politica_de_privacidade-Bike_Trilhas.pdf')) {
-                await launch(
+                await launchUrlString(
                     'https://bdes.joinville.udesc.br/politica/Politica_de_privacidade-Bike_Trilhas.pdf');
               }
             },

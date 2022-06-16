@@ -141,7 +141,7 @@ class EmailPageState extends State<EmailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
+    // final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       backgroundColor: Colors.blue,
       resizeToAvoidBottomInset: true,

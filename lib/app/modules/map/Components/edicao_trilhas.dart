@@ -335,7 +335,7 @@ class _EdicaoTrilhasState extends State<EdicaoTrilhas> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Salvar'),
               onPressed: () {
                 setState(() {
@@ -363,7 +363,7 @@ class _EdicaoTrilhasState extends State<EdicaoTrilhas> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Salvar'),
               onPressed: () {
                 setState(() {
@@ -391,7 +391,7 @@ class _EdicaoTrilhasState extends State<EdicaoTrilhas> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Salvar'),
               onPressed: () {
                 setState(() {
@@ -551,7 +551,7 @@ alertEdit(BuildContext context, String msg) {
             msg,
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
                 child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
