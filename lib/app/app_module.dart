@@ -27,36 +27,34 @@ import 'modules/emailregister/emailregister_module.dart';
 
 class AppModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.singleton((i) => DrawerClassController()),
-    Bind.singleton((i) => AppController()),
-    Bind.singleton((i) => UsertrailsController(i.get(), i.get())),
-    Bind.lazySingleton((i) => MapController(i.get(), i.get(), i.get())),
-    Bind.singleton((i) => InfoRepository(i.get<Dio>())),
-    Bind.singleton((i) => TrilhaRepository(
-        i.get<Dio>(), i.get<SharedPrefs>(), i.get<AuthController>())),
-    Bind.lazySingleton((i) => AuthRepository(i.get<Dio>())),
-    Bind.lazySingleton((i) => AuthController()),
-    Bind.singleton((i) => FilterRepository(i.get<Dio>())),
-    Bind.singleton((i) => SharedPrefs()),
-    Bind.singleton((i) => Dio(BaseOptions(baseUrl: URL_BASE)))
-  ];
+  List<Bind> get binds => [
+        Bind.singleton((i) => DrawerClassController()),
+        Bind.singleton((i) => AppController()),
+        Bind.singleton((i) => UsertrailsController(i.get(), i.get())),
+        Bind.lazySingleton((i) => MapController(i.get(), i.get(), i.get())),
+        Bind.singleton((i) => InfoRepository(i.get<Dio>())),
+        Bind.singleton((i) => TrilhaRepository(
+            i.get<Dio>(), i.get<SharedPrefs>(), i.get<AuthController>())),
+        Bind.lazySingleton((i) => AuthRepository(i.get<Dio>())),
+        Bind.lazySingleton((i) => AuthController()),
+        Bind.singleton((i) => FilterRepository(i.get<Dio>())),
+        Bind.singleton((i) => SharedPrefs()),
+        Bind.singleton((i) => Dio(BaseOptions(baseUrl: URL_BASE)))
+      ];
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => SplashPage()),
-    ModuleRoute('/login',
-        module: LoginModule(), transition: TransitionType.noTransition),
-    ModuleRoute('/map',
-        module: MapModule(), transition: TransitionType.noTransition),
-    ModuleRoute('/fotos', module: PhotoModule()),
-    ModuleRoute('/userroute', module: UserroutesModule()),
-    ModuleRoute('/usertrail', module: UsertrailsModule()),
-    ModuleRoute('/email', module: EmailModule()),
-    ModuleRoute('/emailregister', module: EmailregisterModule()),
-    ModuleRoute('/waypoint', module: WaypointsModule()),
-    ModuleRoute('/filter', module: FilterModule()),
-    ModuleRoute('/info', module: InfoModule()),
-    ChildRoute('/permission', child: (_, args) => PermissionPage())
-  ];
+  List<ModularRoute> get routes => [
+        ChildRoute('/', child: (_, args) => SplashPage()),
+        ModuleRoute('/login',
+            module: LoginModule(), transition: TransitionType.noTransition),
+        ModuleRoute('/map',
+            module: MapModule(), transition: TransitionType.noTransition),
+        ModuleRoute('/fotos', module: PhotoModule()),
+        ModuleRoute('/userroute', module: UserroutesModule()),
+        ModuleRoute('/usertrail', module: UsertrailsModule()),
+        ModuleRoute('/waypoint', module: WaypointsModule()),
+        ModuleRoute('/filter', module: FilterModule()),
+        ModuleRoute('/info', module: InfoModule()),
+        ChildRoute('/permission', child: (_, args) => PermissionPage())
+      ];
 }

@@ -67,15 +67,13 @@ class _PermissionPageState extends State<PermissionPage> {
         SizedBox(
           height: 30,
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
+        OutlinedButton(
+          style: OutlinedButton.styleFrom(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            // Foreground color
-            onPrimary: Theme.of(context).colorScheme.onPrimary,
-            // Background color
-            primary: Theme.of(context).colorScheme.primary,
-          ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            elevation: 0,
+            side: BorderSide(color: Colors.black),
+          ),
           onPressed: () async {
             LocationPermission _permissionGranted =
                 await Geolocator.requestPermission();
@@ -84,29 +82,6 @@ class _PermissionPageState extends State<PermissionPage> {
               functionPermisionEnables(context);
             }
           },
-          child: const Text('Configurar Permissão'),
-        ),
-      ])),
-    );
-  }
-}
-
-
-/*
-        OutlineButton(
-          
-          onPressed: () async {
-            LocationPermission _permissionGranted =
-                await Geolocator.requestPermission();
-            if (_permissionGranted != LocationPermission.denied &&
-                _permissionGranted != LocationPermission.deniedForever) {
-              functionPermisionEnables(context);
-            }
-          },
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          highlightElevation: 0,
-          borderSide: BorderSide(color: Colors.black),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Row(
