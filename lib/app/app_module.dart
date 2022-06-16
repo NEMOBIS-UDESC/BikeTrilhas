@@ -22,6 +22,9 @@ import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'modules/email/email_module.dart';
+import 'modules/emailregister/emailregister_module.dart';
+
 class AppModule extends Module {
   @override
   List<Bind> get binds => [

@@ -18,8 +18,8 @@ class MapModule extends Module {
         child: (_, args) => MapPage(
               position: args.data,
             )),
-    ChildRoute('editor', child: (_, args) => EdicaoTrilhas()),
-    ChildRoute('editorwaypoint',
+    ChildRoute('/editor', child: (_, args) => EdicaoTrilhas()),
+    ChildRoute('/editorwaypoint',
         child: (_, args) => EdicaoWaypoint(
               editMode: args.data,
             )),

@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
         side: BorderSide(color: Colors.white),
       ),
       onPressed: () {
-        store.loginWithGoogle(context);
+        Modular.to.pushNamed('/email');
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),

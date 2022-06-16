@@ -71,7 +71,7 @@ class _PhotoPageState extends ModularState<PhotoPage, PhotoController> {
               '${DateTime.now()}.png',
             );
 
-            await _controller.takePicture(path);
+            await _controller.takePicture();
 
             dispose();
 
