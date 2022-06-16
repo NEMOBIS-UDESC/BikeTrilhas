@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'app/app_widget.dart';
 import 'app/shared/info/save_trilha.dart';
 
-void main() async {
+void main() async { 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await getPref();
