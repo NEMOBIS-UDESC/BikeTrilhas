@@ -44,60 +44,66 @@ class _PermissionPageState extends State<PermissionPage> {
     return Container(
       padding: EdgeInsets.all(28.0),
       child: Center(
-          child: Column(children: [
-        Image.asset(
-          "images/about_logo.png",
-          fit: BoxFit.fill,
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Text(
-          'Condições de Permissão',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Text(
-          'BikeTrilhas utiliza o serviço de localização para acompanhar em tempo real a geolocalização do usuário com o objetivo de localiza-lo na trilha.',
-          //s, facilitando a compreensão.\nOs dados de geolocalização só serão armazenados caso o usuário crie um novo waypoint ou uma nova trilha, ciclovia e cicloturismo
-          style: TextStyle(fontSize: 16),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-            elevation: 0,
-            side: BorderSide(color: Colors.black),
-          ),
-          onPressed: () async {
-            LocationPermission _permissionGranted =
-                await Geolocator.requestPermission();
-            if (_permissionGranted != LocationPermission.denied &&
-                _permissionGranted != LocationPermission.deniedForever) {
-              functionPermisionEnables(context);
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text('Ativar Permissão',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      )),
-                ),
-              ],
+        child: Column(
+          children: [
+            Image.asset(
+              "images/about_logo.png",
+              fit: BoxFit.fill,
             ),
-          ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              'Condições de Permissão',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              'BikeTrilhas utiliza o serviço de localização para acompanhar em tempo real a geolocalização do usuário com o objetivo de localiza-lo na trilha.',
+              //s, facilitando a compreensão.\nOs dados de geolocalização só serão armazenados caso o usuário crie um novo waypoint ou uma nova trilha, ciclovia e cicloturismo
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+                elevation: 0,
+                side: BorderSide(color: Colors.black),
+              ),
+              onPressed: () async {
+                LocationPermission _permissionGranted =
+                    await Geolocator.requestPermission();
+                if (_permissionGranted != LocationPermission.denied &&
+                    _permissionGranted != LocationPermission.deniedForever) {
+                  functionPermisionEnables(context);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text('Ativar Permissão',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-*/
+      ),
+    );
+  }
+}
