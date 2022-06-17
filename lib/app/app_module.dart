@@ -1,3 +1,5 @@
+import 'package:biketrilhas_modular/app/modules/email/email_module.dart';
+import 'package:biketrilhas_modular/app/modules/emailregister/emailregister_module.dart';
 import 'package:biketrilhas_modular/app/modules/filter/filter_module.dart';
 import 'package:biketrilhas_modular/app/modules/info/info_module.dart';
 import 'package:biketrilhas_modular/app/modules/map/map_controller.dart';
@@ -49,6 +51,8 @@ class AppModule extends Module {
         ModuleRoute('/fotos', module: PhotoModule()),
         ModuleRoute('/userroute', module: UserroutesModule()),
         ModuleRoute('/usertrail', module: UsertrailsModule()),
+        ModuleRoute('/email', module: EmailModule()),
+        ModuleRoute('/emailregister', module: EmailregisterModule()),
         ModuleRoute('/waypoint', module: WaypointsModule()),
         ModuleRoute('/filter', module: FilterModule()),
         ModuleRoute('/info', module: InfoModule()),
