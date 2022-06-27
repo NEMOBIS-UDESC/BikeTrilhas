@@ -14,7 +14,8 @@ class FilterPage extends StatefulWidget {
   _FilterPageState createState() => _FilterPageState();
 }
 
-class _FilterPageState extends ModularState<FilterPage, FilterController> {
+class _FilterPageState extends State<FilterPage> {
+  FilterController store = Modular.get();
   List<Item> _data = generateItems();
   @override
   Widget build(BuildContext context) {

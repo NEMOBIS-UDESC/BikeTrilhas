@@ -4,12 +4,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    Modular.setInitialRoute('/');
+    return MaterialApp.router(
       title: 'BikeTrilhas',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-    ).modular();
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
+    );
   }
 }

@@ -15,8 +15,8 @@ class UsertrailsPage extends StatefulWidget {
   _UsertrailsPageState createState() => _UsertrailsPageState();
 }
 
-class _UsertrailsPageState
-    extends ModularState<UsertrailsPage, UsertrailsController> {
+class _UsertrailsPageState extends State<UsertrailsPage> {
+  UsertrailsController store = Modular.get();
   Completer<GoogleMapController> _controller = Completer();
   int routeState = 0, destinos = 0;
   @override
