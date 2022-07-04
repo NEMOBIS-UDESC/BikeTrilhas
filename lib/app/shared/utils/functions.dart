@@ -97,7 +97,7 @@ locationPermissionPopUp(context) {
 }
 
 functionPermisionEnables(context) async {
-  Geolocator.getCurrentPosition().then((value) {
+  await Geolocator.getCurrentPosition().then((value) {
     Modular.to.pushReplacementNamed('/map',
         arguments: CameraPosition(
             target: LatLng(value.latitude, value.longitude), zoom: 17));
