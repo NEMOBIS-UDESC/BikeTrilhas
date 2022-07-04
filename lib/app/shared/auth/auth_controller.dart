@@ -1,3 +1,5 @@
+import 'package:biketrilhas_modular/app/modules/email/email_user.dart';
+import 'package:biketrilhas_modular/app/shared/auth/repositories/auth_repository.dart';
 import 'package:biketrilhas_modular/app/shared/auth/repositories/auth_repository_interface.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,6 +35,17 @@ abstract class _AuthControllerBase with Store {
   Future loginWithGoogle() async {
     user = await _authRepository.getGoogleLogin();
   }
+
+    @action
+  Future loginWithEmail(EmailUser useremail) async {
+    try{
+      user = await _authRepository.getEmailLogin(useremail);
+    }on AuthException catch (e){
+      print(e.message);
+      throw AuthException(e.message);
+    }
+  }
+
 
   Future logout() {
     return _authRepository.getLogout();

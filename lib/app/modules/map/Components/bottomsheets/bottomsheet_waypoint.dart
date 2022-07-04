@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:biketrilhas_modular/app/modules/map/Components/bottomsheets/bottomsheet_actions.dart';
 import 'package:biketrilhas_modular/app/shared/controller/map_controller.dart';
 import 'package:biketrilhas_modular/app/shared/info/save_trilha.dart';

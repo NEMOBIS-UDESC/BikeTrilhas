@@ -1,13 +1,7 @@
 import 'dart:async';
-import 'package:biketrilhas_modular/app/modules/filter/filter_page.dart';
-import 'package:biketrilhas_modular/app/modules/map/Components/bottomsheets/bottom_sheets.dart';
-import 'package:background_location/background_location.dart' as bglocation;
 import 'package:biketrilhas_modular/app/modules/map/Components/custom_search_delegate.dart';
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/drawer/drawer_page.dart';
-import 'package:biketrilhas_modular/app/shared/trilhas/trilha_model.dart';
-import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
-import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -27,7 +21,8 @@ class MapPage extends StatefulWidget {
   _MapPageState createState() => _MapPageState();
 }
 
-class _MapPageState extends ModularState<MapPage, MapController> {
+class _MapPageState extends State<MapPage> {
+  MapController store = Modular.get();
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController mapController;
   int n = 0;

@@ -10,7 +10,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends ModularState<LoginPage, LoginController> {
+class _LoginPageState extends State<LoginPage> {
+  LoginController store = Modular.get();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,14 +35,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   }
 
   Widget _signInButton(context) {
-    return OutlineButton(
-      splashColor: Colors.grey,
+    return OutlinedButton(
       onPressed: () {
         store.loginWithGoogle(context);
       },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-      highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.white),
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+        elevation: 0,
+        side: BorderSide(color: Colors.white),
+      ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -62,15 +64,17 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       ),
     );
   }
+
   Widget _signInButtonEmail(context) {
-    return OutlineButton(
-      splashColor: Colors.grey,
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+        elevation: 0,
+        side: BorderSide(color: Colors.white),
+      ),
       onPressed: () {
-        store.loginWithGoogle(context);
+        Modular.to.pushNamed('/email');
       },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-      highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.white),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(

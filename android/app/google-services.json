@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "115669332033-056jkfofkf4r6g2ljbiq3ojsifj9g11v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.bdes.biketrilhas",
+            "certificate_hash": "cc4516d5d8d2bbfd3323e7c0ad6dc00363bf0039"
+          }
+        },
+        {
           "client_id": "115669332033-0teu09j93s5ocg1v51qgtq54lus233h2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -23,19 +31,43 @@
           }
         },
         {
-          "client_id": "115669332033-5ur6lo92ol1urlp0ejnld33njvtj7t1q.apps.googleusercontent.com",
+          "client_id": "115669332033-1dglub73urhou37t6hnifqh0ht4uh1av.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "bcd933fe1a61d7054c1a5d97336b59e70f4e9fe3"
+            "certificate_hash": "04a93379f482c48497153049a3d8014681029ab4"
           }
         },
         {
-          "client_id": "115669332033-73dm88ljtksom3006pb7sdruo7u2h1rr.apps.googleusercontent.com",
+          "client_id": "115669332033-2tebnm6p6nrfljtc184ae26qc6vv31q2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "d290a097638bb1e247e9c2807e5389d0de440549"
+            "certificate_hash": "3dd267d8694c095c96c79aa919266e8a27f15e66"
+          }
+        },
+        {
+          "client_id": "115669332033-3ba17uqr8ji6phqam1p6s81feukgatgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.bdes.biketrilhas",
+            "certificate_hash": "69c82680388da9e97ca7ff74adbfbb34e694fdc4"
+          }
+        },
+        {
+          "client_id": "115669332033-6rt252ldfau0rddr4vkmr6l222db22i2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.bdes.biketrilhas",
+            "certificate_hash": "7d9fdc79345615e899b77b14f97e4f0e747fa62e"
+          }
+        },
+        {
+          "client_id": "115669332033-7dodvjffub31et59npnhck84j7c8flus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.bdes.biketrilhas",
+            "certificate_hash": "a9a09843e817f21c793fe3920cc7fd697812da37"
           }
         },
         {
@@ -55,11 +87,11 @@
           }
         },
         {
-          "client_id": "115669332033-dft1q8ak4247feu2gulrncr0tfie3la9.apps.googleusercontent.com",
+          "client_id": "115669332033-e3urpk4bnlk01hi2kbr10370fmd4vb9r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "bd8a7ffc7e5387f6b749e23d000db16d7412af3e"
+            "certificate_hash": "041754e7a308a050f8aa744794d64b34f9887165"
           }
         },
         {
@@ -71,43 +103,11 @@
           }
         },
         {
-          "client_id": "115669332033-gang3lv1s9hnurqg201m7q2ihged0300.apps.googleusercontent.com",
+          "client_id": "115669332033-jbm6mjth7btrnl5jr161ghm8bdbhbora.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "c4523ae172c9296d76fcad806da393ba59888efe"
-          }
-        },
-        {
-          "client_id": "115669332033-gcfo8p1fbkhv2000m8qn3qvam9l6n9cr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "54bc20e40d8350ca19dd318bc9f7c54a6874ef48"
-          }
-        },
-        {
-          "client_id": "115669332033-ghlp57g5frgoccgl20100j59hf2r03a4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "f699c4895868f376f332ac53183e6706199b4471"
-          }
-        },
-        {
-          "client_id": "115669332033-huc45lov88erff9c40663hriodi14pms.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "e9f3c82e17787807eef676b9fca9e0f2f498158e"
-          }
-        },
-        {
-          "client_id": "115669332033-kfvc8u7hovno927sbs5u9gg1vcbnhpmi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "3a9d7b26585463eaab0768f9ca94980df37a0a75"
+            "certificate_hash": "067e734fc86a783367e4285738a60fc2c8077854"
           }
         },
         {
@@ -119,11 +119,11 @@
           }
         },
         {
-          "client_id": "115669332033-ocm0bl0oe27413t1nqggmsio9hp1iulm.apps.googleusercontent.com",
+          "client_id": "115669332033-m6ml37klfilrufrb36nns1icg0prbu2o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.bdes.biketrilhas",
-            "certificate_hash": "f3747f381e1c05f440f7e1c4df566e0953e582fa"
+            "certificate_hash": "0478f91d1f6b269261a18caea8f75ad5defe51b3"
           }
         },
         {
@@ -171,11 +171,67 @@
       },
       "oauth_client": [
         {
-          "client_id": "115669332033-badt69pc8o52i02gc896lftrpbjt4ovi.apps.googleusercontent.com",
+          "client_id": "115669332033-19uh2oef040l9hp1gqp65e3a8tqqe46q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.udesc.bdes.biketrilhas",
-            "certificate_hash": "bd8a7ffc7e5387f6b749e23d000db16d7412af3e"
+            "certificate_hash": "041754e7a308a050f8aa744794d64b34f9887165"
+          }
+        },
+        {
+          "client_id": "115669332033-6qq8770kvqk7rtv595ouh3lk4al2i817.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "fa4b896e1501abdbc1712c0eaad16faa4bed895e"
+          }
+        },
+        {
+          "client_id": "115669332033-7niij45h3e2uovfc8li94s0b1ouv9rvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "ccd39fe4891b0fc71d02bba1692276d7093f7790"
+          }
+        },
+        {
+          "client_id": "115669332033-8bret9mf6oti8era7n05brd5qe9q292a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "7d9fdc79345615e899b77b14f97e4f0e747fa62e"
+          }
+        },
+        {
+          "client_id": "115669332033-cmg5k718crmu71i1tnjuisb2cpcoosgo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "a9a09843e817f21c793fe3920cc7fd697812da37"
+          }
+        },
+        {
+          "client_id": "115669332033-hiqakg9kpa098k6p9g9efr1l9pk4oi1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "04a93379f482c48497153049a3d8014681029ab4"
+          }
+        },
+        {
+          "client_id": "115669332033-s8f7rm9cic690huh9k1a4qr3gs0j9qp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "cc4516d5d8d2bbfd3323e7c0ad6dc00363bf0039"
+          }
+        },
+        {
+          "client_id": "115669332033-tunuo06735cihv64ik902ts83cha6dqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.udesc.bdes.biketrilhas",
+            "certificate_hash": "e51ce623690b4192c741cacf1ce1e9da3874d177"
           }
         },
         {

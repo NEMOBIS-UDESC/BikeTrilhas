@@ -17,20 +17,24 @@ class _SplashPageState extends State<SplashPage> {
   ReactionDisposer disposer;
 
   @override
+  @override
   void initState() {
     super.initState();
     disposer = autorun((_) async {
       final auth = Modular.get<AuthController>();
+
       if (auth.status == AuthStatus.login) {
         //await auth.loginProcedure();
-        LocationPermission _permissionGranted =
-            await Geolocator.checkPermission();
+
+        var _permissionGranted = await Geolocator.checkPermission();
+
         if (_permissionGranted == LocationPermission.denied ||
             _permissionGranted == LocationPermission.deniedForever) {
           await locationPermissionPopUp(context);
         } else {
           await functionPermisionEnables(context);
         }
+        //Modular.to.pushReplacementNamed('/map');
       } else if (auth.status == AuthStatus.logoff) {
         Modular.to.pushReplacementNamed('/login');
       }

@@ -27,7 +27,7 @@ alert(BuildContext context, String mensagem, String titulo) {
             mensagem,
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
                 child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
@@ -55,14 +55,14 @@ alertaComEscolha(context, titulo, mensagem, String botao1text,
           ),
           content: mensagem,
           actions: <Widget>[
-            FlatButton(
+            TextButton(
                 child: Text(botao1text),
                 onPressed: () {
                   botao1func();
                   Navigator.pop(context);
                   return;
                 }),
-            FlatButton(
+            TextButton(
               child: Text(botao2text),
               onPressed: botao2func,
             ),
@@ -78,7 +78,7 @@ locationPermissionPopUp(context) {
       context,
       'Location Permission',
       Text(
-          'Bike Trilhas collects location data to enable map tracking even when the app is in background.'),
+          'Bike Trilhas collects location data to enable map tracking even when the app is closed or not in use.'),
       'CANCEL',
       () {
         Modular.to.pushReplacementNamed('/map');
