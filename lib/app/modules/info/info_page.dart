@@ -200,7 +200,7 @@ List<Widget> _renderContactRow(width) {
 
 class InfoPage extends StatefulWidget {
   final String title;
-  const InfoPage({Key key, this.title = "Nemobis"}) : super(key: key);
+  const InfoPage({Key key, this.title = "Sobre"}) : super(key: key);
 
   @override
   _InfoPageState createState() => _InfoPageState();
