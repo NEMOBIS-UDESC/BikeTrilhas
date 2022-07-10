@@ -51,6 +51,10 @@ Positioned _renderColapse(BuildContext context, int codwp) {
                     0.8,
                 child: ListTile(
                   title: Text(mapController.modelWaypoint.nome),
+                  trailing: Icon(
+                    Icons.arrow_upward,
+                    color: Colors.blue,
+                  ),
                   onTap: () {
                     mapController.nameSheet = null;
                     bottomSheetWaypoint(codwp);
