@@ -2,23 +2,23 @@ import 'package:biketrilhas_modular/app/shared/utils/breakpoints.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 void _launchURL(String url) async {
-  if (!await launchUrl(Uri(path: url))) throw 'Could not launch $url';
+  canLaunchUrlString(url).then((canLaunch) {
+    if (canLaunch) {
+      var encoded = Uri.encodeFull(url);
+      Uri uri = Uri.parse(encoded);
+      launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
+    }
+  });
 }
 
 void _launchMailto(String appEmailUrl) async {
-  final mailtoLink = Mailto(
-    to: ['nemobis.udesc@gmail.com'],
-    // subject: 'mailto example subject',
-    // body: 'mailto example body',
-  );
-  // Convert the Mailto instance into a string.
-  // Use either Dart's string interpolation
-  // or the toString() method.
-  await launchUrl(Uri(path: '$mailtoLink'));
+  await launchUrl(Uri.parse(appEmailUrl));
 }
 
 Row _renderRowAbout(double width) {
@@ -175,25 +175,10 @@ List<Widget> _renderContactRow(width) {
     return [
       InkWell(
         child: Row(
-          children: [itens[0], itens[1]],
+          children: [itens[0], itens[2], itens[4]],
         ),
         onTap: () => _launchURL(APP_WEBSITE),
       ),
-      SizedBox(height: 24),
-      InkWell(
-        child: Row(
-          children: [itens[2], itens[3]],
-        ),
-        onTap: () => _launchMailto(APP_EMAIL_URL),
-      ),
-      SizedBox(height: 24),
-      InkWell(
-        child: Row(
-          children: [itens[4], itens[5]],
-        ),
-        onTap: () => _launchURL(APP_INSTAGRAM_URL),
-      ),
-      SizedBox(height: 24),
     ];
   }
 }
@@ -222,7 +207,6 @@ class _InfoPageState extends State<InfoPage> {
         centerTitle: true,
       ),
       body: Scrollbar(
-        thumbVisibility: !isTablet,
         thickness: 8,
         interactive: true,
         child: Center(
@@ -271,22 +255,18 @@ class _InfoPageState extends State<InfoPage> {
                             ..._renderContactRow(shortestSide)
                                 .map((e) => e)
                                 .toList(),
+                            Expanded(
+                              child: InkWell(
+                                child: Image.asset(
+                                  "images/h_udesc_logo.jpg",
+                                  width: 350,
+                                ),
+                                onTap: () => _launchURL(APP_WEBSITE),
+                              ),
+                            )
                           ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: InkWell(
-                              child: Image.asset(
-                                "images/h_udesc_logo.jpg",
-                                width: 150,
-                              ),
-                              onTap: () => _launchURL(APP_WEBSITE),
-                            ),
-                          )
-                        ],
-                      )
                     ],
                   ),
                 ),
