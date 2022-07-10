@@ -114,6 +114,7 @@ GestureDetector _renderImageContainer(
                         disableGestures: false,
                         imageProvider: CachedNetworkImageProvider(e),
                         minScale: PhotoViewComputedScale.covered,
+                        maxScale: 1.5,
                       ),
                       _renderCloseIcon(context, isTablet),
                     ],
