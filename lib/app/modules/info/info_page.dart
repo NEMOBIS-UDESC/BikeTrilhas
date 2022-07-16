@@ -3,10 +3,9 @@ import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 void _launchURL(String url) async {
-  canLaunchUrlString(url).then((canLaunch) {
+  canLaunchUrl(Uri.parse(url)).then((canLaunch) {
     if (canLaunch) {
       var encoded = Uri.encodeFull(url);
       Uri uri = Uri.parse(encoded);
