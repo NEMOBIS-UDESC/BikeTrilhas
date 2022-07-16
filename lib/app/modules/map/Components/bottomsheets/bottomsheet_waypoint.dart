@@ -61,7 +61,7 @@ Positioned _renderColapse(BuildContext context, int codwp) {
                   },
                 ),
               ));
-        });
+        }, backgroundColor: Colors.transparent);
       },
     ),
   );
@@ -161,7 +161,9 @@ bottomSheetWaypoint(int codwp, {int codt}) async {
           }
           return ClipRRect(
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
               child: Stack(children: <Widget>[
                 Container(
                   color: Colors.white,
