@@ -75,11 +75,11 @@ List<Widget> _renderText(String title, String text) {
   ];
 }
 
-Icon _renderIcon(IconData customIcon) {
+Icon _renderIcon(IconData customIcon, {double size: 50}) {
   return Icon(
     customIcon,
     color: Colors.blue,
-    size: 50,
+    size: size,
   );
 }
 
@@ -173,11 +173,23 @@ List<Widget> _renderContactRow(width) {
     ];
   } else {
     return [
-      InkWell(
-        child: Row(
-          children: [itens[0], itens[2], itens[4]],
-        ),
-        onTap: () => _launchURL(APP_WEBSITE),
+      SizedBox(height: 24),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          InkWell(
+            child: itens[0],
+            onTap: () => _launchURL(APP_WEBSITE),
+          ),
+          InkWell(
+            child: itens[2],
+            onTap: () => _launchMailto(APP_EMAIL_URL),
+          ),
+          InkWell(
+            child: itens[4],
+            onTap: () => _launchURL(APP_INSTAGRAM_URL),
+          ),
+        ],
       ),
     ];
   }
@@ -251,19 +263,36 @@ class _InfoPageState extends State<InfoPage> {
                             SizedBox(height: isTablet ? 42 : 24),
                             _renderRowAbout(shortestSide),
                             // CONTACT ROW
-                            SizedBox(height: isTablet ? 60 : 36),
+                            SizedBox(height: isTablet ? 42 : 24),
                             ..._renderContactRow(shortestSide)
                                 .map((e) => e)
                                 .toList(),
-                            Expanded(
-                              child: InkWell(
-                                child: Image.asset(
-                                  "images/h_udesc_logo.jpg",
-                                  width: 350,
-                                ),
-                                onTap: () => _launchURL(APP_WEBSITE),
+                            SizedBox(height: isTablet ? 60 : 46),
+                            InkWell(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  _renderIcon(FontAwesomeIcons.book, size: 25),
+                                  SizedBox(width: isTablet ? 30 : 13),
+                                  Text(
+                                    'Politicas de Privacidade',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
                               ),
-                            )
+                              onTap: () => _launchURL(APP_PRIVACY_POLICY),
+                            ),
+                            SizedBox(height: isTablet ? 60 : 56),
+                            InkWell(
+                              child: Image.asset(
+                                "images/h_udesc_logo.jpg",
+                                width: 350,
+                              ),
+                              onTap: () => _launchURL(APP_WEBSITE),
+                            ),
                           ],
                         ),
                       ),
