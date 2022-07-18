@@ -62,7 +62,7 @@ class TrilhaRepository {
     try {
       savedTrilhas =
           SavedTrilhas.fromJson(await sharedPrefs.read('savedTrilhas'));
-    } catch (Exception) {
+    } catch (exception) {
       savedTrilhas = SavedTrilhas([]);
     }
     sharedPrefs.remove('trilha $codigo');

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:biketrilhas_modular/app/modules/map/Components/bottomsheets/bottom_sheets.dart';
 import 'package:biketrilhas_modular/app/shared/filter/filter_repository.dart';
 import 'package:biketrilhas_modular/app/shared/info/dados_trilha_model.dart';
 import 'package:biketrilhas_modular/app/shared/info/dados_waypoint_model.dart';
@@ -293,13 +292,13 @@ abstract class _MapControllerBase with Store {
           onWillPop: () async => false,
           child: AlertDialog(
             actions: [
-              FlatButton(
+              TextButton(
                   child: Text('VOLTAR'),
                   onPressed: () {
                     Navigator.pop(context);
                     return;
                   }),
-              FlatButton(
+              TextButton(
                   child: Text('OK'),
                   onPressed: () {
                     createdTrails.add(followTrail);
