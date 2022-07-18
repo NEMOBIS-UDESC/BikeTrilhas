@@ -68,50 +68,6 @@ Icon _renderIcon(IconData customIcon, {double size: 50}) {
 
 List<Widget> _renderContactRow(width) {
   bool isTablet = width > MOBILE_BREAKPOINT;
-  List<Expanded> itens = [
-    Expanded(
-      flex: 1,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_renderIcon(FontAwesomeIcons.chrome)],
-      ),
-    ),
-    Expanded(
-      flex: 3,
-      child: Column(
-        children: _renderText('Website', APP_WEBSITE),
-      ),
-    ),
-    Expanded(
-      flex: 1,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_renderIcon(Icons.mail)],
-      ),
-    ),
-    Expanded(
-      flex: 3,
-      child: Column(
-        children: _renderText('Email', APP_EMAIL),
-      ),
-    ),
-    Expanded(
-      flex: 1,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_renderIcon(FontAwesomeIcons.instagram)],
-      ),
-    ),
-    Expanded(
-      flex: 3,
-      child: Column(
-        children: _renderText('Instagram', APP_INSTAGRAM),
-      ),
-    )
-  ];
 
   if (isTablet) {
     return [
@@ -158,28 +114,38 @@ List<Widget> _renderContactRow(width) {
     ];
   } else {
     return [
-      SizedBox(height: 24),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
-            child: Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    child: itens[0],
-                    onTap: () => launchURL(APP_WEBSITE),
-                  ),
-                  InkWell(
-                    child: itens[2],
-                    onTap: () => launchURL(APP_EMAIL_URL),
-                  ),
-                  InkWell(
-                    child: itens[4],
-                    onTap: () => launchURL(APP_INSTAGRAM_URL),
-                  )
-                ]),
+            child: InkWell(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [_renderIcon(FontAwesomeIcons.chrome)],
+              ),
+              onTap: () => launchURL(APP_WEBSITE),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [_renderIcon(Icons.mail)],
+              ),
+              onTap: () => launchURL(APP_EMAIL_URL),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [_renderIcon(FontAwesomeIcons.instagram)],
+              ),
+              onTap: () => launchURL(APP_INSTAGRAM_URL),
+            ),
           ),
         ],
       ),
@@ -261,11 +227,11 @@ class _InfoPageState extends State<InfoPage> {
                             SizedBox(height: isTablet ? 52 : 24),
                             _renderRowAbout(shortestSide),
                             // CONTACT ROW
-                            SizedBox(height: isTablet ? 62 : 24),
+                            SizedBox(height: isTablet ? 62 : 46),
                             ..._renderContactRow(shortestSide)
                                 .map((e) => e)
                                 .toList(),
-                            SizedBox(height: isTablet ? 62 : 56),
+                            SizedBox(height: isTablet ? 62 : 46),
                             InkWell(
                               child: Image.asset(
                                 "images/h_udesc_logo.jpg",
