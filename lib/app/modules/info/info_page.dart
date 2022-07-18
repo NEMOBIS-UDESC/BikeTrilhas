@@ -1,24 +1,8 @@
 import 'package:biketrilhas_modular/app/shared/utils/breakpoints.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
+import 'package:biketrilhas_modular/app/shared/utils/launchers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-void _launchURL(String url) async {
-  canLaunchUrl(Uri.parse(url)).then((canLaunch) {
-    if (canLaunch) {
-      var encoded = Uri.encodeFull(url);
-      Uri uri = Uri.parse(encoded);
-      launchUrl(uri);
-    } else {
-      throw 'Could not launch $url';
-    }
-  });
-}
-
-void _launchMailto(String appEmailUrl) async {
-  await launchUrl(Uri.parse(appEmailUrl));
-}
 
 Row _renderRowAbout(double width) {
   bool isTablet = width > MOBILE_BREAKPOINT;
@@ -48,7 +32,7 @@ Row _renderRowAbout(double width) {
             "images/udesc_logo.jpg",
           ),
           onTap: () {
-            _launchURL(APP_WEBSITE);
+            launchURL(APP_WEBSITE);
           },
         ),
       ),
@@ -141,7 +125,7 @@ List<Widget> _renderContactRow(width) {
                   ..._renderText('Website', APP_WEBSITE)
                 ],
               ),
-              onTap: () => _launchURL(APP_WEBSITE),
+              onTap: () => launchURL(APP_WEBSITE),
             ),
           ),
           Expanded(
@@ -152,7 +136,7 @@ List<Widget> _renderContactRow(width) {
                   ..._renderText('Email', APP_EMAIL)
                 ],
               ),
-              onTap: () => _launchMailto(APP_EMAIL_URL),
+              onTap: () => launchURL(APP_EMAIL_URL),
             ),
           ),
           Expanded(
@@ -163,7 +147,7 @@ List<Widget> _renderContactRow(width) {
                   ..._renderText('Instagram', APP_INSTAGRAM)
                 ],
               ),
-              onTap: () => _launchURL(APP_INSTAGRAM_URL),
+              onTap: () => launchURL(APP_INSTAGRAM_URL),
             ),
           )
         ],
@@ -176,18 +160,37 @@ List<Widget> _renderContactRow(width) {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          InkWell(
-            child: itens[0],
-            onTap: () => _launchURL(APP_WEBSITE),
+          Expanded(
+            child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    child: itens[0],
+                    onTap: () => launchURL(APP_WEBSITE),
+                  ),
+                  InkWell(
+                    child: itens[2],
+                    onTap: () => launchURL(APP_EMAIL_URL),
+                  ),
+                  InkWell(
+                    child: itens[4],
+                    onTap: () => launchURL(APP_INSTAGRAM_URL),
+                  )
+                ]),
           ),
-          InkWell(
-            child: itens[2],
-            onTap: () => _launchMailto(APP_EMAIL_URL),
-          ),
-          InkWell(
-            child: itens[4],
-            onTap: () => _launchURL(APP_INSTAGRAM_URL),
-          ),
+          // Expanded(
+          //   child: InkWell(
+          //     child: itens[2],
+          //     onTap: () => launchURL(APP_EMAIL_URL),
+          //   ),
+          // ),
+          // Expanded(
+          //   child: InkWell(
+          //     child: itens[4],
+          //     onTap: () => launchURL(APP_INSTAGRAM_URL),
+          //   ),
+          // ),
         ],
       ),
     ];
@@ -253,7 +256,7 @@ class _InfoPageState extends State<InfoPage> {
                                       "images/about_logo.png",
                                       width: 150,
                                     ),
-                                    onTap: () => _launchURL(APP_WEBSITE),
+                                    onTap: () => launchURL(APP_WEBSITE),
                                   ),
                                 )
                               ],
@@ -282,7 +285,7 @@ class _InfoPageState extends State<InfoPage> {
                                   )
                                 ],
                               ),
-                              onTap: () => _launchURL(APP_PRIVACY_POLICY),
+                              onTap: () => launchURL(APP_PRIVACY_POLICY),
                             ),
                             SizedBox(height: isTablet ? 60 : 56),
                             InkWell(
@@ -290,7 +293,7 @@ class _InfoPageState extends State<InfoPage> {
                                 "images/h_udesc_logo.jpg",
                                 width: 350,
                               ),
-                              onTap: () => _launchURL(APP_WEBSITE),
+                              onTap: () => launchURL(APP_WEBSITE),
                             ),
                           ],
                         ),
