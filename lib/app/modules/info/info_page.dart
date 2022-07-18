@@ -116,43 +116,45 @@ List<Widget> _renderContactRow(width) {
   if (isTablet) {
     return [
       Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
-            child: InkWell(
-              child: Column(
+            child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _renderIcon(FontAwesomeIcons.chrome),
-                  ..._renderText('Website', APP_WEBSITE)
-                ],
-              ),
-              onTap: () => launchURL(APP_WEBSITE),
-            ),
+                  InkWell(
+                    child: Column(
+                      children: [
+                        _renderIcon(FontAwesomeIcons.chrome),
+                        ..._renderText('Website', APP_WEBSITE)
+                      ],
+                    ),
+                    onTap: () => launchURL(APP_WEBSITE),
+                  ),
+                  InkWell(
+                    child: Column(
+                      children: [
+                        _renderIcon(Icons.mail),
+                        ..._renderText('Email', APP_EMAIL)
+                      ],
+                    ),
+                    onTap: () => launchURL(APP_EMAIL_URL),
+                  ),
+                  InkWell(
+                    child: Column(
+                      children: [
+                        _renderIcon(FontAwesomeIcons.instagram),
+                        ..._renderText('Instagram', APP_INSTAGRAM)
+                      ],
+                    ),
+                    onTap: () => launchURL(APP_INSTAGRAM_URL),
+                  ),
+                ]),
           ),
-          Expanded(
-            child: InkWell(
-              child: Column(
-                children: [
-                  _renderIcon(Icons.mail),
-                  ..._renderText('Email', APP_EMAIL)
-                ],
-              ),
-              onTap: () => launchURL(APP_EMAIL_URL),
-            ),
-          ),
-          Expanded(
-            child: InkWell(
-              child: Column(
-                children: [
-                  _renderIcon(FontAwesomeIcons.instagram),
-                  ..._renderText('Instagram', APP_INSTAGRAM)
-                ],
-              ),
-              onTap: () => launchURL(APP_INSTAGRAM_URL),
-            ),
-          )
+          SizedBox(height: 24),
         ],
       ),
-      SizedBox(height: 24),
     ];
   } else {
     return [
@@ -179,18 +181,6 @@ List<Widget> _renderContactRow(width) {
                   )
                 ]),
           ),
-          // Expanded(
-          //   child: InkWell(
-          //     child: itens[2],
-          //     onTap: () => launchURL(APP_EMAIL_URL),
-          //   ),
-          // ),
-          // Expanded(
-          //   child: InkWell(
-          //     child: itens[4],
-          //     onTap: () => launchURL(APP_INSTAGRAM_URL),
-          //   ),
-          // ),
         ],
       ),
     ];
@@ -251,43 +241,31 @@ class _InfoPageState extends State<InfoPage> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: InkWell(
-                                    child: Image.asset(
-                                      "images/about_logo.png",
-                                      width: 150,
-                                    ),
-                                    onTap: () => launchURL(APP_WEBSITE),
+                                  child: Flex(
+                                    direction: Axis.horizontal,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        child: Image.asset(
+                                          "images/about_logo.png",
+                                          width: isTablet ? 450 : 250,
+                                        ),
+                                        onTap: () => launchURL(APP_WEBSITE),
+                                      )
+                                    ],
                                   ),
                                 )
                               ],
                             ),
                             // CONTENT ROW
-                            SizedBox(height: isTablet ? 42 : 24),
+                            SizedBox(height: isTablet ? 52 : 24),
                             _renderRowAbout(shortestSide),
                             // CONTACT ROW
-                            SizedBox(height: isTablet ? 42 : 24),
+                            SizedBox(height: isTablet ? 62 : 24),
                             ..._renderContactRow(shortestSide)
                                 .map((e) => e)
                                 .toList(),
-                            SizedBox(height: isTablet ? 60 : 46),
-                            InkWell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  _renderIcon(FontAwesomeIcons.book, size: 25),
-                                  SizedBox(width: isTablet ? 30 : 13),
-                                  Text(
-                                    'Politicas de Privacidade',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              onTap: () => launchURL(APP_PRIVACY_POLICY),
-                            ),
-                            SizedBox(height: isTablet ? 60 : 56),
+                            SizedBox(height: isTablet ? 62 : 56),
                             InkWell(
                               child: Image.asset(
                                 "images/h_udesc_logo.jpg",
