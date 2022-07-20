@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.115669332033-7mu7dijulmrj04gkf8o264vjf2tq85ib</string>
+				<string>com.googleusercontent.apps.115669332033-pe3fic511f4kgme85lqpvb4d3u36hrq0</string>
 			</array>
 		</dict>
 	</array>
@@ -37,6 +37,8 @@
 	<string>Para certos momentos precisaremos utilizar sua camera.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Precisaremos utilizar sua localização</string>
+	<key>EnableBackgroundLocationUpdates</key>
+  	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Para certos momentos precisaremos utilizar seu microfone.</string>
 	<key>UILaunchStoryboardName</key>
@@ -60,5 +62,7 @@
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
 	<string>YES</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>
