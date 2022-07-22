@@ -2,8 +2,11 @@ import 'package:biketrilhas_modular/app/modules/email/email_user.dart';
 import 'package:biketrilhas_modular/app/modules/login/login_controller.dart';
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/auth/repositories/auth_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+
+import '../../shared/utils/functions.dart';
 
 class EmailPage extends StatefulWidget {
   final String title;
@@ -152,7 +155,7 @@ class EmailPageState extends State<EmailPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(height: 100),
+              SizedBox(height: 35),
               Image.asset('images/icon.png'),
               SizedBox(height: 30),
               Image.asset('images/bike_logo_actionbar.png'),
@@ -172,7 +175,7 @@ class EmailPageState extends State<EmailPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      SizedBox(height: 45),
+                      SizedBox(height: 5),
                       //userInput(nameController, 'Nome', TextInputType.name, false),
                       userInput(emailController, 'Email',
                           TextInputType.emailAddress, false),
@@ -183,7 +186,7 @@ class EmailPageState extends State<EmailPage> {
                         // for an exact replicate, remove the padding.
                         // pour une réplique exact, enlever le padding.
                         padding:
-                            const EdgeInsets.only(top: 5, left: 70, right: 70),
+                            const EdgeInsets.only(top: 5, left: 30, right: 30),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -224,7 +227,7 @@ class EmailPageState extends State<EmailPage> {
                         // for an exact replicate, remove the padding.
                         // pour une réplique exact, enlever le padding.
                         padding:
-                            const EdgeInsets.only(top: 5, left: 70, right: 70),
+                            const EdgeInsets.only(top: 5, left: 30, right: 30),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -244,9 +247,32 @@ class EmailPageState extends State<EmailPage> {
                           ),
                         ),
                       ),
+                      Container(
+                        height: 55,
+                        // for an exact replicate, remove the padding.
+                        // pour une réplique exact, enlever le padding.
+                        padding:
+                            const EdgeInsets.only(top: 5, left: 30, right: 30),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            primary: Colors.indigo.shade800,
+                          ),
+                          onPressed: () async {
+                            recuperarSenha(context);
+                          },
+                          child: Text(
+                            'Esqueci a senha',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 20),
-
-                      Divider(thickness: 0, color: Colors.white),
                     ],
                   ),
                 ),
@@ -256,5 +282,25 @@ class EmailPageState extends State<EmailPage> {
         ),
       ),
     );
+  }
+
+  Future recuperarSenha(context) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(child: CircularProgressIndicator()),
+    );
+
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
+
+      snackAlert(context, "E-mail enviado");
+      Navigator.of(context).pop();
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      Navigator.of(context).pop();
+      snackAlert(context, e.message);
+    }
   }
 }

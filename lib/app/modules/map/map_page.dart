@@ -61,8 +61,8 @@ class _MapPageState extends State<MapPage> {
                   showSearch(
                           context: context,
                           delegate: CustomSearchDelegate(store))
-                      .then((value) {
-                    store.getPolylines();
+                      .then((value) async {
+                    await store.getPolylines();
                     setState(() {
                       store.tappedTrilha = value.codt;
                       bottomSheetTrilha(value);
@@ -77,11 +77,11 @@ class _MapPageState extends State<MapPage> {
             child: IconButton(
                 icon: Icon(Icons.delete_sweep, color: Colors.red),
                 onPressed: () {
-                  setState(() {
+                  setState(() async {
                     filterDisposed = true;
                     store.filterClear = false;
                     store.trilhasFiltradas = store.typeFilter;
-                    store.getPolylines();
+                    await store.getPolylines();
                   });
                 }),
             visible: (store.filterClear),
@@ -150,13 +150,15 @@ class _MapPageState extends State<MapPage> {
                   ],
                 );*/
               }
-
-              if (store.trilhas.error != null) {
-                print(store.trilhas.error);
+              
+              if (store.trilhas != null) {
+                print("Sem erro");
                 return _map();
               }
 
-              if (store.trilhas.value == null) {
+              if (store.trilhas == null) {
+                print("Com erro");
+
                 return Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -533,7 +535,7 @@ class _MapPageState extends State<MapPage> {
   //utilizado na gravação de uma nova trilha
   Future<void> centerScreen(Position position) async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+    await controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: LatLng(position.latitude, position.longitude), zoom: 19.0)));
   }
 }

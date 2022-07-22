@@ -51,13 +51,17 @@ Positioned _renderColapse(BuildContext context, int codwp) {
                     0.8,
                 child: ListTile(
                   title: Text(mapController.modelWaypoint.nome),
+                  trailing: Icon(
+                    Icons.arrow_upward,
+                    color: Colors.blue,
+                  ),
                   onTap: () {
                     mapController.nameSheet = null;
                     bottomSheetWaypoint(codwp);
                   },
                 ),
               ));
-        });
+        }, backgroundColor: Colors.transparent);
       },
     ),
   );
@@ -110,6 +114,7 @@ GestureDetector _renderImageContainer(
                         disableGestures: false,
                         imageProvider: CachedNetworkImageProvider(e),
                         minScale: PhotoViewComputedScale.covered,
+                        maxScale: 1.5,
                       ),
                       _renderCloseIcon(context, isTablet),
                     ],
@@ -156,7 +161,9 @@ bottomSheetWaypoint(int codwp, {int codt}) async {
           }
           return ClipRRect(
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
               child: Stack(children: <Widget>[
                 Container(
                   color: Colors.white,

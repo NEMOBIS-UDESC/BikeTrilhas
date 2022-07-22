@@ -104,3 +104,5 @@ const String APP_EMAIL = 'nemobis.udesc@gmail.com';
 const String APP_EMAIL_URL = 'mailto:nemobis.udesc@gmail.com';
 const String APP_INSTAGRAM = '@nemobis.udesc';
 const String APP_INSTAGRAM_URL = 'http://instagram.com/_u/nemobis.udesc/';
+const String APP_PRIVACY_POLICY =
+    'https://bdes.joinville.udesc.br/politica/Politica_de_privacidade-Bike_Trilhas.htm';

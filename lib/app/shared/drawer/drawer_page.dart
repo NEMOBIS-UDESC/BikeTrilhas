@@ -1,10 +1,11 @@
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/drawer/drawer_controller.dart';
+import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
+import 'package:biketrilhas_modular/app/shared/utils/launchers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class DrawerPage extends StatefulWidget {
   final String title;
@@ -214,7 +215,7 @@ class _DrawerPageState extends State<DrawerPage> {
               if (draw.value != 3) {
                 // draw.value = 3;
                 Navigator.pop(context);
-                Modular.to.pushNamed('/info');
+                Modular.to.pushNamed('/info/');
               }
             },
           ),
@@ -239,11 +240,7 @@ class _DrawerPageState extends State<DrawerPage> {
             dense: true,
             onTap: () async {
               Navigator.pop(context);
-              if (await canLaunchUrlString(
-                  'https://bdes.joinville.udesc.br/politica/Politica_de_privacidade-Bike_Trilhas.pdf')) {
-                await launchUrlString(
-                    'https://bdes.joinville.udesc.br/politica/Politica_de_privacidade-Bike_Trilhas.pdf');
-              }
+              launchURL(APP_PRIVACY_POLICY);
             },
           ),
         ],
