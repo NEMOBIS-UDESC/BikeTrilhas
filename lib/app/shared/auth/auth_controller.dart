@@ -36,16 +36,15 @@ abstract class _AuthControllerBase with Store {
     user = await _authRepository.getGoogleLogin();
   }
 
-    @action
+  @action
   Future loginWithEmail(EmailUser useremail) async {
-    try{
+    try {
       user = await _authRepository.getEmailLogin(useremail);
-    }on AuthException catch (e){
+    } on AuthException catch (e) {
       print(e.message);
       throw AuthException(e.message);
     }
   }
-
 
   Future logout() {
     return _authRepository.getLogout();

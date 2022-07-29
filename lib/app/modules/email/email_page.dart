@@ -64,6 +64,7 @@ class EmailPageState extends State<EmailPage> {
       await logcontroller.loginWithEmail(context, usuario);
       loading.value = false;
     } on AuthException catch (e) {
+      alert(context, e.message, 'Erro');
       _warnings(e.message);
       Navigator.pop(context);
       //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
@@ -194,13 +195,23 @@ class EmailPageState extends State<EmailPage> {
                             primary: Colors.indigo.shade800,
                           ),
                           onPressed: () async {
-                            showLoaderDialog(context);
-                            EmailUser user = new EmailUser(
-                                1,
-                                emailController.text,
-                                nameController.text,
-                                senhaController.text);
-                            login(user);
+                            if (emailController.text.isNotEmpty &&
+                                senhaController.text.isNotEmpty) {
+                              try {
+                                EmailUser user = new EmailUser(
+                                    1,
+                                    emailController.text,
+                                    nameController.text,
+                                    senhaController.text);
+                                login(user);
+                              } catch (e) {
+                                alert(context, 'Erro na autenticação', 'Erro');
+                              }
+                            } else {
+                              alert(context, 'Email ou senha não informados',
+                                  'Falha');
+                              return;
+                            }
                           },
                           child: AnimatedBuilder(
                               animation: loading,
