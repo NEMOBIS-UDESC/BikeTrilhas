@@ -2,7 +2,9 @@ import 'package:biketrilhas_modular/app/modules/email/email_user.dart';
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/info/info_repository.dart';
 import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
@@ -41,7 +43,6 @@ abstract class _LoginControllerBase with Store {
   @action
   Future loginWithEmail(context, EmailUser user) async {
     int i = 1;
-    print(user.email);
     if (i == 1) {
       try {
         final auth = Modular.get<AuthController>();
@@ -61,5 +62,17 @@ abstract class _LoginControllerBase with Store {
         loading = false;
       }
     }
+  }
+}
+
+@action
+Future logout() async {
+  GoogleSignIn googleSignIn = GoogleSignIn();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  try {
+    await auth.signOut();
+    await googleSignIn.signOut();
+  } catch (e) {
+    print(e);
   }
 }

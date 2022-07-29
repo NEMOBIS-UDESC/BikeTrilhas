@@ -284,23 +284,31 @@ class EmailPageState extends State<EmailPage> {
     );
   }
 
-  Future recuperarSenha(context) async {
-    showDialog(
+  recuperarSenha(context) async {
+    /*showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => Center(child: CircularProgressIndicator()),
-    );
+    );*/
 
     try {
-      await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: emailController.text.trim());
-
-      snackAlert(context, "E-mail enviado");
-      Navigator.of(context).pop();
+      if (emailController.text.isNotEmpty) {
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(email: emailController.text.trim());
+        //snackAlert(context, "E-mail enviado");
+        alert(
+            context,
+            'E-mail enviado com sucesso\n\nVerifique o lixo eletrônico',
+            'Sucesso');
+        //Navigator.of(context).pop();
+        return;
+      } else {
+        alert(context, 'Informe seu e-mail', 'Falha');
+        return;
+      }
     } on FirebaseAuthException catch (e) {
-      print(e);
-      Navigator.of(context).pop();
-      snackAlert(context, e.message);
+      //Navigator.of(context).pop();
+      alert(context, 'E-mail não cadastrado', 'Falha');
     }
   }
 }

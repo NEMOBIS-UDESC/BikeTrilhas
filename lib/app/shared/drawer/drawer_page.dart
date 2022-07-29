@@ -1,11 +1,14 @@
+import 'package:biketrilhas_modular/app/modules/login/login_controller.dart';
 import 'package:biketrilhas_modular/app/shared/auth/auth_controller.dart';
 import 'package:biketrilhas_modular/app/shared/drawer/drawer_controller.dart';
 import 'package:biketrilhas_modular/app/shared/utils/constants.dart';
 import 'package:biketrilhas_modular/app/shared/utils/functions.dart';
 import 'package:biketrilhas_modular/app/shared/utils/launchers.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class DrawerPage extends StatefulWidget {
@@ -242,6 +245,31 @@ class _DrawerPageState extends State<DrawerPage> {
             onTap: () async {
               Navigator.pop(context);
               launchURL(APP_PRIVACY_POLICY);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.logout,
+              color: Colors.black,
+              size: 40,
+            ),
+            title: Observer(builder: (_) {
+              Color cor;
+              cor = (draw.value == 6) ? Colors.white : Colors.black;
+              return Text(
+                'Sair',
+                style: TextStyle(
+                    height: 1.8,
+                    fontSize: 18,
+                    color: cor,
+                    fontWeight: FontWeight.bold),
+              );
+            }),
+            dense: true,
+            onTap: () async {
+              await logout();
+              Navigator.pop(context);
+              Modular.to.pushReplacementNamed('/login/');
             },
           ),
         ],
