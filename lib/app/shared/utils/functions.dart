@@ -3,14 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
-///Verifica se o usuário está online
+///Verifica se o usuário está com internet habilitada
 Future<bool> isOnline() async {
-  var connectivityResult = await (Connectivity().checkConnectivity());
+  ConnectivityResult connectivityResult =
+      await (Connectivity().checkConnectivity());
   if (connectivityResult == ConnectivityResult.none) {
     return false;
   }
   return true;
+}
+
+// Verica se o usuario está com a localização habilitada
+Future<bool> isLocationEnabled() async {
+  return await Geolocator.isLocationServiceEnabled();
 }
 
 // Alert caso não tenha permisão de localização
@@ -22,16 +29,14 @@ void functionPermisionDisabled(context) {
           'Bike Trilhas collects location data to enable map tracking even when the app is closed or not in use.'),
       'CANCEL',
       () async {
-        Modular.to.pushReplacementNamed('/map');
+        await Modular.to.pushReplacementNamed('/map/');
       },
       'OK',
       () async {
         Navigator.pop(context);
-        LocationPermission _permissionGranted =
-            await Geolocator.requestPermission();
-        if (_permissionGranted != LocationPermission.denied &&
-            _permissionGranted != LocationPermission.deniedForever) {
-          functionPermisionEnables(context);
+        await Geolocator.requestPermission();
+        if (await isPermisionEnabled()) {
+          functionPermisionEnabled(context);
         } else {
           return;
         }
@@ -39,9 +44,9 @@ void functionPermisionDisabled(context) {
 }
 
 // Caso tenha permisão de localização redireciona para o mapa com a posição
-void functionPermisionEnables(context) async {
-  await Geolocator.getCurrentPosition().then((value) {
-    Modular.to.pushReplacementNamed('/map',
+void functionPermisionEnabled(context) async {
+  await Geolocator.getCurrentPosition().then((value) async {
+    await Modular.to.pushReplacementNamed('/map/',
         arguments: CameraPosition(
             target: LatLng(value.latitude, value.longitude), zoom: 17));
   });
@@ -64,18 +69,16 @@ mostrarProgressoLinear(context, text) {
   );
 }
 
-// "true" caso o usuario concedeu algum tipo de permissão e "false" caso não
-Future<bool> permissao() async {
-  LocationPermission permissao = await Geolocator.checkPermission();
-  if (permissao != LocationPermission.denied &&
-      permissao != LocationPermission.deniedForever) {
-    return true;
-  } else {
+// Verica se o usuario está permitindo uso da localização
+Future<bool> isPermisionEnabled() async {
+  LocationPermission location = await Geolocator.checkPermission();
+  if (location == LocationPermission.denied ||
+      location == LocationPermission.deniedForever) {
     return false;
+  } else {
+    return true;
   }
 }
-
-enum EditMode { ADD, UPDATE }
 
 ///Emite um alerta do tipo snack
 snackAlert(context, text) {
@@ -149,3 +152,5 @@ alertaComEscolha(context, titulo, mensagem, String botao1text,
     },
   );
 }
+
+enum EditMode { ADD, UPDATE }

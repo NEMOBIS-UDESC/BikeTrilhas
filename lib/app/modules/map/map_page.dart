@@ -101,6 +101,7 @@ class _MapPageState extends State<MapPage> {
            */
           Observer(
             builder: (context) {
+              // Verificando a posição do usuario
               if (widget.position == null) {
                 return Stack(
                   children: [
@@ -133,22 +134,6 @@ class _MapPageState extends State<MapPage> {
                     ),
                   ],
                 );
-                /*return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Text("Erro ao obter localização"),
-                    ),
-                    SizedBox(height: 5),
-                    Center(
-                      child: Text(
-                          "Abra o menu -> configurações para conceder permissões"),
-                      // habilitar a localização
-                    ),
-                    SizedBox(height: 20),
-                    CircularProgressIndicator(),
-                  ],
-                );*/
               }
 
               if (store.trilhas.error != null) {
@@ -455,30 +440,6 @@ class _MapPageState extends State<MapPage> {
         ],
       ),
     );
-  }
-
-  // verificar as permissões de localização do usuário
-  void checkPermission(Location location) async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    location.changeSettings(distanceFilter: 8, interval: 1000);
   }
 
   // atualização do estado da página de mapas fora da classe

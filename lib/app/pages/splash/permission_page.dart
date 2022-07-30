@@ -92,11 +92,10 @@ class _PermissionPageState extends State<PermissionPage> {
                   side: BorderSide(color: Colors.black),
                 ),
                 onPressed: () async {
-                  LocationPermission _permissionGranted =
-                      await Geolocator.requestPermission();
-                  if (_permissionGranted != LocationPermission.denied &&
-                      _permissionGranted != LocationPermission.deniedForever) {
-                    functionPermisionEnables(context);
+                  if (await isPermisionEnabled() == true) {
+                    snackAlert(context, 'Localização já habilitada');
+                  } else {
+                    functionPermisionDisabled(context);
                   }
                 },
                 child: Padding(

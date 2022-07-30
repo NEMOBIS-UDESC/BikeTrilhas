@@ -98,7 +98,7 @@ class _DrawerPageState extends State<DrawerPage> {
             dense: true,
             onTap: () async {
               if (draw.value != 1) {
-                if (await isOnline() && await permissao()) {
+                if (await isOnline() && await isPermisionEnabled()) {
                   Navigator.pop(context);
                   Modular.to.pushNamed('/filter');
                 } else {
@@ -128,7 +128,7 @@ class _DrawerPageState extends State<DrawerPage> {
             }),
             dense: true,
             onTap: () async {
-              if (await permissao()) {
+              if (await isPermisionEnabled()) {
                 if (draw.value != 2) {
                   Navigator.pop(context);
                   Modular.to.pushNamed("/userroute");
@@ -159,7 +159,7 @@ class _DrawerPageState extends State<DrawerPage> {
             }),
             dense: true,
             onTap: () async {
-              if (await permissao()) {
+              if (await isPermisionEnabled()) {
                 if (draw.value != 10) {
                   Navigator.pop(context);
                   Modular.to.pushNamed("/usertrail");
