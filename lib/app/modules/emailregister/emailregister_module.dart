@@ -3,9 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class EmailregisterModule extends Module {
   @override
-  final List<Bind> binds = [
-    // Bind.lazySingleton((i) => EmailregisterStore()),
-  ];
+  final List<Bind> binds = [];
 
   @override
   final List<ModularRoute> routes = [

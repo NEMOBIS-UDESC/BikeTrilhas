@@ -27,7 +27,7 @@ abstract class _LoginControllerBase with Store {
       await auth.loginWithGoogle();
       await auth.loginProcedure();
       await infoRepository.getModels();
-      await locationPermissionPopUp(context);
+      await functionPermisionDisabled(context);
       /*LocationPermission _permissionGranted =
           await Geolocator.requestPermission();
       if (_permissionGranted == LocationPermission.denied) {
@@ -49,7 +49,7 @@ abstract class _LoginControllerBase with Store {
         loading = true;
         await auth.loginProcedure();
         await infoRepository.getModels();
-        await locationPermissionPopUp(context);
+        await functionPermisionDisabled(context);
         /*LocationPermission _permissionGranted =
             await Geolocator.requestPermission();
         if (_permissionGranted == LocationPermission.denied) {

@@ -19,11 +19,8 @@ class EmailPage extends StatefulWidget {
 
 class EmailPageState extends State<EmailPage> {
   final loading = ValueNotifier<bool>(false);
-  //final EmailoginStore store = Modular.get();
-  //FirebaseAuth _auth = FirebaseAuth.instance;
   AuthController auth;
   final logcontroller = Modular.get<LoginController>();
-  //AuthService authserv;
   final authenticator = Modular.get<AuthController>();
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
@@ -67,7 +64,6 @@ class EmailPageState extends State<EmailPage> {
       alert(context, e.message, 'Erro');
       _warnings(e.message);
       Navigator.pop(context);
-      //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
       loading.value = false;
     }
   }
@@ -249,7 +245,7 @@ class EmailPageState extends State<EmailPage> {
                             Modular.to.pushNamed('/emailregister');
                           },
                           child: Text(
-                            'Cadastre-se',
+                            'Cadastrar',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
@@ -314,7 +310,7 @@ class EmailPageState extends State<EmailPage> {
         //Navigator.of(context).pop();
         return;
       } else {
-        alert(context, 'Informe seu e-mail', 'Falha');
+        alert(context, 'Informe seu email para recuperar a senha', 'Falha');
         return;
       }
     } on FirebaseAuthException catch (e) {
